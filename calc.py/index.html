@@ -1,0 +1,1282 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="generator" content="pdoc 0.10.0" />
+    <title>calc.py API documentation</title>
+    <meta name="description" content="`calc.py` is an Isatis.neo extension to go where no one has gone before!" />
+    <link rel="preload stylesheet" as="style"
+        href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css"
+        integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+    <link rel="preload stylesheet" as="style"
+        href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css"
+        integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+    <link rel="stylesheet preload" as="style"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+    <style>
+        :root {
+            --highlight-color: #fe9
+        }
+
+        .flex {
+            display: flex !important
+        }
+
+        body {
+            line-height: 1.5em
+        }
+
+        #content {
+            padding: 20px
+        }
+
+        #sidebar {
+            padding: 30px;
+            overflow: hidden
+        }
+
+        #sidebar>*:last-child {
+            margin-bottom: 2cm
+        }
+
+        .http-server-breadcrumbs {
+            font-size: 130%;
+            margin: 0 0 15px 0
+        }
+
+        #footer {
+            font-size: .75em;
+            padding: 5px 30px;
+            border-top: 1px solid #ddd;
+            text-align: right
+        }
+
+        #footer p {
+            margin: 0 0 0 1em;
+            display: inline-block
+        }
+
+        #footer p:last-child {
+            margin-right: 30px
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 300
+        }
+
+        h1 {
+            font-size: 2.5em;
+            line-height: 1.1em
+        }
+
+        h2 {
+            font-size: 1.75em;
+            margin: 1em 0 .50em 0
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin: 25px 0 10px 0
+        }
+
+        h4 {
+            margin: 0;
+            font-size: 105%
+        }
+
+        h1:target,
+        h2:target,
+        h3:target,
+        h4:target,
+        h5:target,
+        h6:target {
+            background: var(--highlight-color);
+            padding: .2em 0
+        }
+
+        a {
+            color: #058;
+            text-decoration: none;
+            transition: color .3s ease-in-out
+        }
+
+        a:hover {
+            color: #e82
+        }
+
+        .title code {
+            font-weight: bold
+        }
+
+        h2[id^="header-"] {
+            margin-top: 2em
+        }
+
+        .ident {
+            color: #900
+        }
+
+        pre code {
+            background: #f8f8f8;
+            font-size: .8em;
+            line-height: 1.4em
+        }
+
+        code {
+            background: #f2f2f1;
+            padding: 1px 4px;
+            overflow-wrap: break-word
+        }
+
+        h1 code {
+            background: transparent
+        }
+
+        pre {
+            background: #f8f8f8;
+            border: 0;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            margin: 1em 0;
+            padding: 1ex
+        }
+
+        #http-server-module-list {
+            display: flex;
+            flex-flow: column
+        }
+
+        #http-server-module-list div {
+            display: flex
+        }
+
+        #http-server-module-list dt {
+            min-width: 10%
+        }
+
+        #http-server-module-list p {
+            margin-top: 0
+        }
+
+        .toc ul,
+        #index {
+            list-style-type: none;
+            margin: 0;
+            padding: 0
+        }
+
+        #index code {
+            background: transparent
+        }
+
+        #index h3 {
+            border-bottom: 1px solid #ddd
+        }
+
+        #index ul {
+            padding: 0
+        }
+
+        #index h4 {
+            margin-top: .6em;
+            font-weight: bold
+        }
+
+        @media (min-width:200ex) {
+            #index .two-column {
+                column-count: 2
+            }
+        }
+
+        @media (min-width:300ex) {
+            #index .two-column {
+                column-count: 3
+            }
+        }
+
+        dl {
+            margin-bottom: 2em
+        }
+
+        dl dl:last-child {
+            margin-bottom: 4em
+        }
+
+        dd {
+            margin: 0 0 1em 3em
+        }
+
+        #header-classes+dl>dd {
+            margin-bottom: 3em
+        }
+
+        dd dd {
+            margin-left: 2em
+        }
+
+        dd p {
+            margin: 10px 0
+        }
+
+        .name {
+            background: #eee;
+            font-weight: bold;
+            font-size: .85em;
+            padding: 5px 10px;
+            display: inline-block;
+            min-width: 40%
+        }
+
+        .name:hover {
+            background: #e0e0e0
+        }
+
+        dt:target .name {
+            background: var(--highlight-color)
+        }
+
+        .name>span:first-child {
+            white-space: nowrap
+        }
+
+        .name.class>span:nth-child(2) {
+            margin-left: .4em
+        }
+
+        .inherited {
+            color: #999;
+            border-left: 5px solid #eee;
+            padding-left: 1em
+        }
+
+        .inheritance em {
+            font-style: normal;
+            font-weight: bold
+        }
+
+        .desc h2 {
+            font-weight: 400;
+            font-size: 1.25em
+        }
+
+        .desc h3 {
+            font-size: 1em
+        }
+
+        .desc dt code {
+            background: inherit
+        }
+
+        .source summary,
+        .git-link-div {
+            color: #666;
+            text-align: right;
+            font-weight: 400;
+            font-size: .8em;
+            text-transform: uppercase
+        }
+
+        .source summary>* {
+            white-space: nowrap;
+            cursor: pointer
+        }
+
+        .git-link {
+            color: inherit;
+            margin-left: 1em
+        }
+
+        .source pre {
+            max-height: 500px;
+            overflow: auto;
+            margin: 0
+        }
+
+        .source pre code {
+            font-size: 12px;
+            overflow: visible
+        }
+
+        .hlist {
+            list-style: none
+        }
+
+        .hlist li {
+            display: inline
+        }
+
+        .hlist li:after {
+            content: ',\2002'
+        }
+
+        .hlist li:last-child:after {
+            content: none
+        }
+
+        .hlist .hlist {
+            display: inline;
+            padding-left: 1em
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        td {
+            padding: 0 .5em
+        }
+
+        .admonition {
+            padding: .1em .5em;
+            margin-bottom: 1em
+        }
+
+        .admonition-title {
+            font-weight: bold
+        }
+
+        .admonition.note,
+        .admonition.info,
+        .admonition.important {
+            background: #aef
+        }
+
+        .admonition.todo,
+        .admonition.versionadded,
+        .admonition.tip,
+        .admonition.hint {
+            background: #dfd
+        }
+
+        .admonition.warning,
+        .admonition.versionchanged,
+        .admonition.deprecated {
+            background: #fd4
+        }
+
+        .admonition.error,
+        .admonition.danger,
+        .admonition.caution {
+            background: lightpink
+        }
+    </style>
+    <style media="screen and (min-width: 700px)">
+        @media screen and (min-width:700px) {
+            #sidebar {
+                width: 30%;
+                height: 100vh;
+                overflow: auto;
+                position: sticky;
+                top: 0
+            }
+
+            #content {
+                width: 70%;
+                max-width: 100ch;
+                padding: 3em 4em;
+                border-left: 1px solid #ddd
+            }
+
+            pre code {
+                font-size: 1em
+            }
+
+            .item .name {
+                font-size: 1em
+            }
+
+            main {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end
+            }
+
+            .toc ul ul,
+            #index ul {
+                padding-left: 1.5em
+            }
+
+            .toc>ul>li {
+                margin-top: .5em
+            }
+        }
+    </style>
+    <style media="print">
+        @media print {
+            #sidebar h1 {
+                page-break-before: always
+            }
+
+            .source {
+                display: none
+            }
+        }
+
+        @media print {
+            * {
+                background: transparent !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                text-shadow: none !important
+            }
+
+            a[href]:after {
+                content: " (" attr(href) ")";
+                font-size: 90%
+            }
+
+            a[href][title]:after {
+                content: none
+            }
+
+            abbr[title]:after {
+                content: " (" attr(title) ")"
+            }
+
+            .ir a:after,
+            a[href^="javascript:"]:after,
+            a[href^="#"]:after {
+                content: ""
+            }
+
+            pre,
+            blockquote {
+                border: 1px solid #999;
+                page-break-inside: avoid
+            }
+
+            thead {
+                display: table-header-group
+            }
+
+            tr,
+            img {
+                page-break-inside: avoid
+            }
+
+            img {
+                max-width: 100% !important
+            }
+
+            @page {
+                margin: 0.5cm
+            }
+
+            p,
+            h2,
+            h3 {
+                orphans: 3;
+                widows: 3
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                page-break-after: avoid
+            }
+        }
+    </style>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"
+        integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+    <script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+
+<body>
+    <main>
+        <article id="content">
+            <header>
+                <h1 class="title">Module <code>calc</code></h1>
+            </header>
+            <section id="section-intro">
+                <p><code>calc.py</code> is an Isatis.neo extension to go where no one has gone before!</p>
+            </section>
+            <section>
+            </section>
+            <section>
+            </section>
+            <section>
+                <h2 class="section-title" id="header-functions">Functions</h2>
+                <dl>
+                    <dt id="calc.as_df"><code class="name flex">
+<span>def <span class="ident">as_df</span></span>(<span>*, include=None, exclude=None, order=None, regex=False, flags=0, macro_sep='_', expand=True) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Creates a pandas DataFrame from the variables set in the calculator,
+                                optionally filtering them by include or exclude lists or patterns.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>include</code></strong> :&ensp;<code>List, str, Optional</code></dt>
+                                <dd>Variables to add to the output, either explicitly set as a list-like or as a
+                                    pattern. Defaults to all.</dd>
+                                <dt><strong><code>exclude</code></strong> :&ensp;<code>List, str, Optional</code></dt>
+                                <dd>Variables to exclude from the output, either explicitly set as a List or as a filter
+                                    pattern. Defaults to None.</dd>
+                                <dt><strong><code>order</code></strong> :&ensp;<code>List, Optional</code></dt>
+                                <dd>Explicit order of all or some of the output variables. If not set for all, will
+                                    leave the remaining variables after the ones set with default ordering.</dd>
+                                <dt><strong><code>regex</code></strong> :&ensp;<code>bool, Optional</code></dt>
+                                <dd>Whether to interpret strings in either include or exclude arguments as regular
+                                    expressions. Defaults to <code>False</code>, meaning it will use <code>glob</code>
+                                    patterns instead of regex.</dd>
+                                <dt><strong><code>flags</code></strong> :&ensp;<code>int, Optional</code></dt>
+                                <dd>Regular expression flags to pass to <code>re.compile</code> if regex is set to
+                                    <code>True</code> and include or exclude are not already <code>Pattern</code>
+                                    objects.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>pd.DataFrame</code></dt>
+                                <dd>Filtered <code>pd.DataFrame</code> with the determined variables.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.dcos_line"><code class="name flex">
+<span>def <span class="ident">dcos_line</span></span>(<span>trend, plunge)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Convert the trend and plunge of a line to a directional cosine</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>trend</code></strong> :&ensp;<code>float</code></dt>
+                                <dd>The trend of the line in degrees.</dd>
+                                <dt><strong><code>plunge</code></strong> :&ensp;<code>float</code></dt>
+                                <dd>The plunge of the line in degrees.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>numpy.array</code></dt>
+                                <dd>A 1x3 array representing the directional cosines of the line.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.df_to_md"><code class="name flex">
+<span>def <span class="ident">df_to_md</span></span>(<span>df: pandas.core.frame.DataFrame) ‑> str</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Converts a <code>pandas.DataFrame</code> object to a markdown-formatted string.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+                                <dd>The desired dataframe to convert as string.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <p>A markdown-formatted string.</p>
+                        </div>
+                    </dd>
+                    <dt id="calc.get_globals"><code class="name flex">
+<span>def <span class="ident">get_globals</span></span>(<span>frame)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Retrieve the global variables in the specified frame containing an "app" dictionary with
+                                "project_path".</p>
+                            <p>This function inspects the frames up to { N_LEVELS{ } back from the specified frame
+                                and looks for a global variable named "app" which contains "project_path". If found, it
+                                returns the global variables
+                                of that frame.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>frame</code></strong> :&ensp;<code>frame</code></dt>
+                                <dd>A frame object to start the search from.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>dict</code></dt>
+                                <dd>A dictionary containing global variables in the relevant frame.</dd>
+                            </dl>
+                            <h2 id="raises">Raises</h2>
+                            <dl>
+                                <dt><code>Exception</code></dt>
+                                <dd>If "app" dictionary with "project_path" is not found in the specified number of
+                                    levels.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.get_loc"><code class="name flex">
+<span>def <span class="ident">get_loc</span></span>(<span>frame)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Retrieve the local variables in the specified frame - up to N_LEVELS which contains an
+                                "info" dictionary.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>frame</code></strong> :&ensp;<code>frame</code></dt>
+                                <dd>A frame object to start the search from.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>dict</code></dt>
+                                <dd>A dictionary containing local variables in the relevant frame.</dd>
+                            </dl>
+                            <h2 id="raises">Raises</h2>
+                            <dl>
+                                <dt><code>Exception</code></dt>
+                                <dd>If "info" dictionary is not found in the specified number of levels.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.get_macro_indices"><code class="name flex">
+<span>def <span class="ident">get_macro_indices</span></span>(<span>data)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Get the macro index regardless of the Isatis.Neo version.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>data</code></strong> :&ensp;<code>dict</code></dt>
+                                <dd>Macro variable you wish to get the indices.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>List</code></dt>
+                                <dd>Macro indices as list, else, returns a None value.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.groupby_swath"><code class="name flex">
+<span>def <span class="ident">groupby_swath</span></span>(<span>data, trend, plunge, step, X='X', Y='Y', Z='Z', subset=None, volume=None)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Group data by regular intervals along a line defined by its trend and plunge.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>data</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+                                <dd>The data to be grouped.</dd>
+                                <dt><strong><code>trend</code></strong> :&ensp;<code>float</code></dt>
+                                <dd>The trend of the line in degrees.</dd>
+                                <dt><strong><code>plunge</code></strong> :&ensp;<code>float</code></dt>
+                                <dd>The plunge of the line in degrees.</dd>
+                                <dt><strong><code>step</code></strong> :&ensp;<code>float</code></dt>
+                                <dd>The interval for grouping.</dd>
+                                <dt><strong><code>X</code></strong> :&ensp;<code>str, Optional</code></dt>
+                                <dd>The column name for X coordinate. Default is "X".</dd>
+                                <dt><strong><code>Y</code></strong> :&ensp;<code>str, Optional</code></dt>
+                                <dd>The column name for Y coordinate. Default is "Y".</dd>
+                                <dt><strong><code>Z</code></strong> :&ensp;<code>str, Optional</code></dt>
+                                <dd>The column name for Z coordinate. Default is "Z".</dd>
+                                <dt><strong><code>subset</code></strong> :&ensp;<code>list, Optional</code></dt>
+                                <dd>The subset of columns to include. Default is None, meaning all columns.</dd>
+                                <dt><strong><code>volume</code></strong> :&ensp;<code>str, Optional</code></dt>
+                                <dd>The column name for the volume weights. Default is None.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>pandas.DataFrame</code></dt>
+                                <dd>The grouped data.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.macro_dict"><code class="name flex">
+<span>def <span class="ident">macro_dict</span></span>(<span>variable)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Retrieves the values of a macro variable and returns them as a dictionary indexed by the
+                                variable's indices.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>variable</code></strong> :&ensp;<code>str</code></dt>
+                                <dd>The name of the macro variable to be retrieved.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>dict</code></dt>
+                                <dd>A dictionary of the macro variable's values indexed by its indices.</dd>
+                            </dl>
+                            <h2 id="raises">Raises</h2>
+                            <dl>
+                                <dt><code>Exception</code></dt>
+                                <dd>If the specified variable is not a macro variable (does not have an "indices"
+                                    attribute).</dd>
+                            </dl>
+                            <h2 id="example">Example</h2>
+                            <p>Assuming there's a macro variable 'x' in the calling frame's local scope, defined as
+                                follows:</p>
+                            <pre><code class="language-python">info = {'vars': {'x_key': {'name': 'x', 'indices': {'indices': [1, 2, 3]}}}}
+x = [10, 20, 30]
+
+# Using macro_dict to retrieve values of 'x':
+result = macro_dict('x')
+# result will be {1: 10, 2: 20, 3: 30}
+</code></pre>
+                        </div>
+                    </dd>
+                    <dt id="calc.neo_globals"><code class="name flex">
+<span>def <span class="ident">neo_globals</span></span>(<span>)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Retrieve the global variables in the called context.</p>
+                            <p>This function inspects the frame of the caller and retrieves the global
+                                variables present in that frame.</p>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>dict</code></dt>
+                                <dd>A dictionary containing global variables in the called context.</dd>
+                            </dl>
+                            <h2 id="raises">Raises</h2>
+                            <p>Any exceptions raised by the
+                                <code><a title="calc.get_globals" href="#calc.get_globals">get_globals()</a></code>
+                                function will propagate up.
+                                Example:</p>
+                            <pre><code class="language-python">def some_function():
+    global x
+    x = 10
+    print(neo_globals())
+
+some_function() # Output might include: {'x': 10, ...}
+</code></pre>
+                        </div>
+                    </dd>
+                    <dt id="calc.notify"><code class="name flex">
+<span>def <span class="ident">notify</span></span>(<span>message: typing.Union[str, dict], webhook: str) ‑> None</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Send a notification message to a specified webhook URL.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>message</code></strong> :&ensp;<code>Union[str, dict]</code></dt>
+                                <dd>The notification message to be sent.</dd>
+                                <dt><strong><code>webhook</code></strong> :&ensp;<code>str</code></dt>
+                                <dd>The webhook URL to which the notification will be sent.</dd>
+                            </dl>
+                            <h2 id="example">Example</h2>
+                            <pre><code class="language-python">    message = &quot;Hello, World!&quot;
+    webhook = &quot;https://chat.googleapis.com/v1/spaces/XXXXXXX&quot;
+    notify(message, webhook)
+</code></pre>
+                        </div>
+                    </dd>
+                    <dt id="calc.pairwise"><code class="name flex">
+<span>def <span class="ident">pairwise</span></span>(<span>iterable)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Generates pairs of adjacent elements from the input iterable.</p>
+                            <p>For an input sequence s, this function generates pairs in the form:
+                                (s0, s1), (s1, s2), (s2, s3), &hellip;</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>iterable</code></strong> :&ensp;<code>Iterable</code></dt>
+                                <dd>An iterable object, such as lists, tuples or string.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>iterator</code></dt>
+                                <dd>An iterator that yields tuples containing pairs of adjacent elements from the input
+                                    iterable.</dd>
+                            </dl>
+                            <p>Example:</p>
+                            <pre><code class="language-python">list(pairwise([1, 2, 3, 4]))
+# [(1, 2), (2, 3), (3, 4)]
+</code></pre>
+                        </div>
+                    </dd>
+                    <dt id="calc.variables"><code class="name flex">
+<span>def <span class="ident">variables</span></span>(<span>)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Retrieve the local variables in the current context.</p>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>dict</code></dt>
+                                <dd>A dictionary containing local variables. The keys are variable names, and the values
+                                    are variable values.</dd>
+                            </dl>
+                            <h2 id="raises">Raises</h2>
+                            <p>Any exceptions raised by the
+                                <code><a title="calc.get_loc" href="#calc.get_loc">get_loc()</a></code> method will
+                                propagate up.
+                                Example:</p>
+                            <pre><code class="language-python">def some_function():
+    x = 10
+    y = 20
+    print(variables())
+
+some_function() # Output: {'x': 10, 'y': 20}
+</code></pre>
+                        </div>
+                    </dd>
+                    <dt id="calc.weighted_average"><code class="name flex">
+<span>def <span class="ident">weighted_average</span></span>(<span>grouped_df, weight)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Calculate the weighted average for a grouped data set.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>grouped_df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+                                <dd>The grouped data.</dd>
+                                <dt><strong><code>weight</code></strong> :&ensp;<code>str</code></dt>
+                                <dd>The column name of weights.</dd>
+                            </dl>
+                            <h2 id="returns">Returns</h2>
+                            <dl>
+                                <dt><code>pandas.Series</code></dt>
+                                <dd>A series with the weighted average of the group.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                </dl>
+            </section>
+            <section>
+                <h2 class="section-title" id="header-classes">Classes</h2>
+                <dl>
+                    <dt id="calc.All"><code class="flex name class">
+<span>class <span class="ident">All</span></span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Dummy class to return <code>True</code> when used with <code>in</code> operator.</p>
+                        </div>
+                    </dd>
+                    <dt id="calc.CalcVariables"><code class="flex name class">
+<span>class <span class="ident">CalcVariables</span></span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>A class to handle accessing and setting variables in a certain context.</p>
+                            <pre><code class="language-python">calc_vars = CalcVariables()
+data_frame = calc_vars[&quot;variable_name&quot;]
+calc_vars[&quot;variable_name&quot;] = new_value
+</code></pre>
+                        </div>
+                    </dd>
+                    <dt id="calc.DeadmanSwitch"><code class="flex name class">
+<span>class <span class="ident">DeadmanSwitch</span></span>
+<span>(</span><span>interval: int, callback: typing.Callable)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>A simple dead man switch that triggers a callback function if it hasn't been reset within
+                                the specified interval.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>interval</code></strong> :&ensp;<code>int</code></dt>
+                                <dd>The interval in seconds after which the switch triggers.</dd>
+                                <dt><strong><code>callback</code></strong> :&ensp;<code>Callable</code></dt>
+                                <dd>The function to call when the timer expires.</dd>
+                            </dl>
+                        </div>
+                        <h3>Methods</h3>
+                        <dl>
+                            <dt id="calc.DeadmanSwitch.heartbeat"><code class="name flex">
+<span>def <span class="ident">heartbeat</span></span>(<span>self, interval: bool = None) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Reset the switch's timer with the current or a new interval</p>
+                                    <h2 id="args">Args</h2>
+                                    <dl>
+                                        <dt><strong><code>interval</code></strong> :&ensp;<code>bool, Optional</code>
+                                        </dt>
+                                        <dd>The new interval in seconds. If provided, the switch's interval will be
+                                            updated. Defaults to None.</dd>
+                                    </dl>
+                                    <h2 id="example">Example</h2>
+                                    <pre><code class="language-python"># Reset the timer with the current interval
+switch.heartbeat()
+
+# Reset the timer with a new interval of 10 seconds
+switch.heartbeat(10)
+</code></pre>
+                                </div>
+                            </dd>
+                            <dt id="calc.DeadmanSwitch.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Stop the switch's timer.</p>
+                                    <h2 id="example">Example</h2>
+                                    <pre><code class="language-python">    # Stop the timer
+    switch.stop()
+</code></pre>
+                                </div>
+                            </dd>
+                        </dl>
+                    </dd>
+                    <dt id="calc.Filter"><code class="flex name class">
+<span>class <span class="ident">Filter</span></span>
+<span>(</span><span>pattern, regex, flags=0)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>Class for pattern matching using <code>regex</code> or <code>fnmatch</code>.</p>
+                            <h2 id="attributes">Attributes</h2>
+                            <dl>
+                                <dt><strong><code>match</code></strong></dt>
+                                <dd>A function that takes a string as an argument and returns a boolean indicating
+                                    whether the string matches the pattern.</dd>
+                            </dl>
+                            <h2 id="example">Example</h2>
+                            <p>Using regex:</p>
+                            <pre><code class="language-python">import re
+pattern = r&quot;\d+&quot;  # matches a sequence of digits
+filter = Filter(pattern, regex=True)
+
+print(&quot;12345&quot; in filter)  # Output: True
+print(&quot;abc&quot; in filter)    # Output: False
+</code></pre>
+                            <p>Using fnmatch:</p>
+                            <pre><code class="language-python">pattern = &quot;*.txt&quot;  # matches all strings that end with '.txt'
+filter = Filter(pattern, regex=False)
+
+print(&quot;document.txt&quot; in filter)  # Output: True
+print(&quot;image.jpeg&quot; in filter)    # Output: False
+</code></pre>
+                            <p>Initialize a Filter object.</p>
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>pattern</code></strong></dt>
+                                <dd>The pattern string or a compiled regex pattern.</dd>
+                                <dt><strong><code>regex</code></strong> :&ensp;<code>bool</code></dt>
+                                <dd>If True, the pattern is treated as a regular expression.
+                                    If False, the pattern is treated as a shell-style wildcard string (fnmatch).</dd>
+                                <dt><strong><code>flags</code></strong> :&ensp;<code>int, Optional</code></dt>
+                                <dd>Flags to pass to re.compile() if using regular expression. Defaults to 0.</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.NeoAccessor"><code class="flex name class">
+<span>class <span class="ident">NeoAccessor</span></span>
+<span>(</span><span>pandas_obj)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>A custom accessor for Pandas DataFrame to compute swaths in various directions.</p>
+                            <h2 id="example">Example</h2>
+                            <pre><code class="language-python">df = pd.DataFrame(...)
+swaths = df.neo.swath(direction=&quot;N&quot;, step=10)
+</code></pre>
+                        </div>
+                        <h3>Methods</h3>
+                        <dl>
+                            <dt id="calc.NeoAccessor.swath"><code class="name flex">
+<span>def <span class="ident">swath</span></span>(<span>self, direction, step=None, X='X', Y='Y', Z='Z', subset=None, dataset=None, volume=None)</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Compute swaths of the data in the given direction - uses
+                                        <code><a title="calc.groupby_swath" href="#calc.groupby_swath">groupby_swath()</a></code>.
+                                    </p>
+                                </div>
+                            </dd>
+                        </dl>
+                    </dd>
+                    <dt id="calc.Notify"><code class="flex name class">
+<span>class <span class="ident">Notify</span></span>
+<span>(</span><span>webhook: str, threaded: bool = True)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <h2 id="args">Args</h2>
+                            <dl>
+                                <dt><strong><code>webhook</code></strong> :&ensp;<code>str</code></dt>
+                                <dd>a webhook url</dd>
+                                <dt><strong><code>threaded</code></strong> :&ensp;<code>bool</code></dt>
+                                <dd>whether to send a threaded message (only works with Google Chat)</dd>
+                            </dl>
+                        </div>
+                    </dd>
+                    <dt id="calc.Watch"><code class="flex name class">
+<span>class <span class="ident">Watch</span></span>
+<span>(</span><span>watch: Optional[str] = None, webhook: Optional[str] = None, deadman: bool = False, default_deadman_timeout: float = 300, deadman_timeout_tolerance: float = 2, deadman_channel: str = 'neo', deadman_message: str = 'Isatis.neo is taking too long to run, please check the computer.', trace_file: typing.Union[str, os.PathLike] = None, notification_format: Optional[str] = None)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>A class to monitor and log time intervals between events and optionally send
+                                notifications through webhooks.</p>
+                        </div>
+                        <h3>Methods</h3>
+                        <dl>
+                            <dt id="calc.Watch.current_progress"><code class="name flex">
+<span>def <span class="ident">current_progress</span></span>(<span>self) ‑> Optional[float]</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Calculates the current progress based on previous traces.</p>
+                                    <h2 id="returns">Returns</h2>
+                                    <dl>
+                                        <dt><code>Optional[float]</code></dt>
+                                        <dd>The current progress as a fraction, or None if not applicable.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.event"><code class="name flex">
+<span>def <span class="ident">event</span></span>(<span>self, event=None) ‑> str</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Logs the time and details of an event.</p>
+                                    <h2 id="args">Args</h2>
+                                    <dl>
+                                        <dt><strong><code>event</code></strong> :&ensp;<code>str</code></dt>
+                                        <dd>The name of the event to be logged.</dd>
+                                    </dl>
+                                    <h2 id="returns">Returns</h2>
+                                    <dl>
+                                        <dt><code>str</code></dt>
+                                        <dd>A formatted string with the event details.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.get_trace_file"><code class="name flex">
+<span>def <span class="ident">get_trace_file</span></span>(<span>self, trace_file: typing.Union[str, os.PathLike])</span>
+</code></dt>
+                            <dd>
+                                <div class="desc"></div>
+                            </dd>
+                            <dt id="calc.Watch.init_watch"><code class="name flex">
+<span>def <span class="ident">init_watch</span></span>(<span>self)</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Initializes the watch by creating or clearing the log file.</p>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.load"><code class="name flex">
+<span>def <span class="ident">load</span></span>(<span>self) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Loads the previous trace from a file if it exists.</p>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.message"><code class="name flex">
+<span>def <span class="ident">message</span></span>(<span>self, message) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Sends a custom notification message.</p>
+                                    <h2 id="args">Args</h2>
+                                    <dl>
+                                        <dt><strong><code>message</code></strong> :&ensp;<code>str</code></dt>
+                                        <dd>The custom message to send.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.notify"><code class="name flex">
+<span>def <span class="ident">notify</span></span>(<span>self, message: str) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Sends a notification message if webhook notifications are enabled.</p>
+                                    <h2 id="args">Args</h2>
+                                    <dl>
+                                        <dt><strong><code>message</code></strong> :&ensp;<code>str</code></dt>
+                                        <dd>The message to send.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.save"><code class="name flex">
+<span>def <span class="ident">save</span></span>(<span>self) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Saves the current trace to a file and sends a stop signal to deadman
+                                        notifications if enabled.</p>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.save_summary"><code class="name flex">
+<span>def <span class="ident">save_summary</span></span>(<span>self, path) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Saves a summary of times and events to the specified file.</p>
+                                    <h2 id="args">Args</h2>
+                                    <dl>
+                                        <dt><strong><code>path</code></strong> :&ensp;<code>str</code></dt>
+                                        <dd>The file path where the summary should be saved.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.send_heartbeat"><code class="name flex">
+<span>def <span class="ident">send_heartbeat</span></span>(<span>self, stop=False) ‑> None</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Sends a heartbeat signal for deadman notifications.</p>
+                                    <h2 id="args">Args</h2>
+                                    <dl>
+                                        <dt><strong><code>stop</code></strong> :&ensp;<code>bool</code></dt>
+                                        <dd>Whether to send a stop signal.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.setup_deadman"><code class="name flex">
+<span>def <span class="ident">setup_deadman</span></span>(<span>self, deadman_message, webhook)</span>
+</code></dt>
+                            <dd>
+                                <div class="desc"></div>
+                            </dd>
+                            <dt id="calc.Watch.start"><code class="name flex">
+<span>def <span class="ident">start</span></span>(<span>self)</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Starts the monitoring by resetting timestamps and initializing the watch.</p>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.time_to_finish"><code class="name flex">
+<span>def <span class="ident">time_to_finish</span></span>(<span>self) ‑> Optional[datetime.timedelta]</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Estimates the time remaining to finish based on previous traces.</p>
+                                    <h2 id="returns">Returns</h2>
+                                    <dl>
+                                        <dt><code>Optional[timedelta]</code></dt>
+                                        <dd>The estimated time remaining, or None if not applicable.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                            <dt id="calc.Watch.update_watch"><code class="name flex">
+<span>def <span class="ident">update_watch</span></span>(<span>self, data: typing.List)</span>
+</code></dt>
+                            <dd>
+                                <div class="desc">
+                                    <p>Updates the watch log file with provided data.</p>
+                                    <h2 id="args">Args</h2>
+                                    <dl>
+                                        <dt><strong><code>data</code></strong> :&ensp;<code>List</code></dt>
+                                        <dd>Data to be written to the log file.</dd>
+                                    </dl>
+                                </div>
+                            </dd>
+                        </dl>
+                    </dd>
+                    <dt id="calc.cwd"><code class="flex name class">
+<span>class <span class="ident">cwd</span></span>
+<span>(</span><span>path=None)</span>
+</code></dt>
+                    <dd>
+                        <div class="desc">
+                            <p>A class that allows changing the current working directory temporarily.</p>
+                            <pre><code class="language-python">with cwd(&quot;/path/to/directory&quot;):
+    # Make the data wrangling and operations
+# Current working directory is reset
+</code></pre>
+                        </div>
+                    </dd>
+                </dl>
+            </section>
+        </article>
+        <nav id="sidebar">
+            <h1>Index</h1>
+            <div class="toc">
+                <ul></ul>
+            </div>
+            <ul id="index">
+                <li>
+                    <h3><a href="#header-functions">Functions</a></h3>
+                    <ul class="two-column">
+                        <li><code><a title="calc.as_df" href="#calc.as_df">as_df</a></code></li>
+                        <li><code><a title="calc.dcos_line" href="#calc.dcos_line">dcos_line</a></code></li>
+                        <li><code><a title="calc.df_to_md" href="#calc.df_to_md">df_to_md</a></code></li>
+                        <li><code><a title="calc.get_globals" href="#calc.get_globals">get_globals</a></code></li>
+                        <li><code><a title="calc.get_loc" href="#calc.get_loc">get_loc</a></code></li>
+                        <li><code><a title="calc.get_macro_indices" href="#calc.get_macro_indices">get_macro_indices</a></code>
+                        </li>
+                        <li><code><a title="calc.groupby_swath" href="#calc.groupby_swath">groupby_swath</a></code></li>
+                        <li><code><a title="calc.macro_dict" href="#calc.macro_dict">macro_dict</a></code></li>
+                        <li><code><a title="calc.neo_globals" href="#calc.neo_globals">neo_globals</a></code></li>
+                        <li><code><a title="calc.notify" href="#calc.notify">notify</a></code></li>
+                        <li><code><a title="calc.pairwise" href="#calc.pairwise">pairwise</a></code></li>
+                        <li><code><a title="calc.variables" href="#calc.variables">variables</a></code></li>
+                        <li><code><a title="calc.weighted_average" href="#calc.weighted_average">weighted_average</a></code>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><a href="#header-classes">Classes</a></h3>
+                    <ul>
+                        <li>
+                            <h4><code><a title="calc.All" href="#calc.All">All</a></code></h4>
+                        </li>
+                        <li>
+                            <h4><code><a title="calc.CalcVariables" href="#calc.CalcVariables">CalcVariables</a></code>
+                            </h4>
+                        </li>
+                        <li>
+                            <h4><code><a title="calc.DeadmanSwitch" href="#calc.DeadmanSwitch">DeadmanSwitch</a></code>
+                            </h4>
+                            <ul class="">
+                                <li><code><a title="calc.DeadmanSwitch.heartbeat" href="#calc.DeadmanSwitch.heartbeat">heartbeat</a></code>
+                                </li>
+                                <li><code><a title="calc.DeadmanSwitch.stop" href="#calc.DeadmanSwitch.stop">stop</a></code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4><code><a title="calc.Filter" href="#calc.Filter">Filter</a></code></h4>
+                        </li>
+                        <li>
+                            <h4><code><a title="calc.NeoAccessor" href="#calc.NeoAccessor">NeoAccessor</a></code></h4>
+                            <ul class="">
+                                <li><code><a title="calc.NeoAccessor.swath" href="#calc.NeoAccessor.swath">swath</a></code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4><code><a title="calc.Notify" href="#calc.Notify">Notify</a></code></h4>
+                        </li>
+                        <li>
+                            <h4><code><a title="calc.Watch" href="#calc.Watch">Watch</a></code></h4>
+                            <ul class="two-column">
+                                <li><code><a title="calc.Watch.current_progress" href="#calc.Watch.current_progress">current_progress</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.event" href="#calc.Watch.event">event</a></code></li>
+                                <li><code><a title="calc.Watch.get_trace_file" href="#calc.Watch.get_trace_file">get_trace_file</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.init_watch" href="#calc.Watch.init_watch">init_watch</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.load" href="#calc.Watch.load">load</a></code></li>
+                                <li><code><a title="calc.Watch.message" href="#calc.Watch.message">message</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.notify" href="#calc.Watch.notify">notify</a></code></li>
+                                <li><code><a title="calc.Watch.save" href="#calc.Watch.save">save</a></code></li>
+                                <li><code><a title="calc.Watch.save_summary" href="#calc.Watch.save_summary">save_summary</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.send_heartbeat" href="#calc.Watch.send_heartbeat">send_heartbeat</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.setup_deadman" href="#calc.Watch.setup_deadman">setup_deadman</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.start" href="#calc.Watch.start">start</a></code></li>
+                                <li><code><a title="calc.Watch.time_to_finish" href="#calc.Watch.time_to_finish">time_to_finish</a></code>
+                                </li>
+                                <li><code><a title="calc.Watch.update_watch" href="#calc.Watch.update_watch">update_watch</a></code>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4><code><a title="calc.cwd" href="#calc.cwd">cwd</a></code></h4>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </main>
+    <footer id="footer">
+        <p>Generated by <a href="https://pdoc3.github.io/pdoc"
+                title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+    </footer>
+</body>
+
+</html>
